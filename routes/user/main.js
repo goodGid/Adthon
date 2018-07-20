@@ -38,7 +38,10 @@ router.post('/signin', async (req, res, next) => {
     WHERE id = ? and password = ?
     `;
 
-
+    let tokenInsertQuery =
+    `
+    INSERT INTO auth (user_id, token_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE user_id = ? , token_value = ?
+    `;
     let result = {};
     try {
         let _result = await db.query(selectQuery, [id, password.toString('base64')]);
@@ -50,6 +53,9 @@ router.post('/signin', async (req, res, next) => {
         result.id = _result[0].idx;
         result.email = id;
         result.type = _result[0].user_type == 1 ? 1 : 0 ;
+
+        let _insert = await db.query(tokenInsertQuery, [id, result.token, id, result.token]);
+        console.log(_insert);
 
     } catch (error) {
         return next(error);
