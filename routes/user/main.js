@@ -55,7 +55,6 @@ router.post('/signin', async (req, res, next) => {
         result.type = _result[0].user_type == 1 ? 1 : 0 ;
 
         let _insert = await db.query(tokenInsertQuery, [id, result.token, id, result.token]);
-        console.log(_insert);
 
     } catch (error) {
         return next(error);
@@ -101,6 +100,41 @@ router.post('/signup', async (req, res, next) => {
     return res.r(result);
 });
 
+router.post('/ad_click',  async (req, res, next) => {
+  let {user_id, ad_id} = req.body;
+
+  let validAdQuery =
+  `
+  SELECT * FROM advertisements
+  WHERE id = ?
+  `;
+
+  try {
+
+    let isValid = await db.query(validAdQuery, [ad_id]);
+    console.log(isValid);
+    if(isValid.length == 0 ){
+      return next("400");
+    } else {
+      let insertQuery =
+      `
+      INSERT INTO ad_clicked_log (user_id, ad_id, time)
+      VALUES(?,?, now());
+      `;
+      try{
+        let insertResult = await db.query(insertQuery, [user_id, ad_id]);
+        console.log(insertResult);
+      } catch(error) {
+          return next(error);
+      }
+    }
+  } catch (error){
+      return next(error);
+  }
+
+
+  return res.r(true);
+});
 
 
 module.exports = router;
