@@ -101,7 +101,7 @@ router.post('/signup', async (req, res, next) => {
 });
 
 router.post('/ad_click',  async (req, res, next) => {
-  let {user_id, ad_id} = req.body;
+  let {token, ad_id} = req.body;
 
   let validAdQuery =
   `
@@ -116,6 +116,9 @@ router.post('/ad_click',  async (req, res, next) => {
     if(isValid.length == 0 ){
       return next("400");
     } else {
+      let jws_result = jwt.verify(token);
+      let user_id = jws_result.email;
+      console.log(user_id);
       let insertQuery =
       `
       INSERT INTO ad_clicked_log (user_id, ad_id, time)
