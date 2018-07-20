@@ -1,5 +1,3 @@
-
-const async = require('async');
 const pool = require('../config/dbPool.js');
 
 /*
@@ -16,7 +14,7 @@ module.exports = {
       result = await connection.query(query, data) || null;
     }
     catch(err) {
-      console.log("mysql error! err log =>" + err);
+      console.log("Mysql Error =>" + err);
       next(err);
     }
     finally {
