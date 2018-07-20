@@ -3,17 +3,14 @@
  */
 const express = require('express');
 const router = express.Router();
-const _crypto = require('crypto');
-const async = require('async');
-const bodyParser = require('body-parser');
+const crypto = require('crypto');
 const jwt = require('../../module/jwt.js');
 const db = require('../../module/pool.js');
 const secretKey = require('../../config/secretKey').key;
 
 
-
 function encrypt(u_password) {
-    const encrypted = _crypto.createHmac('sha512', secretKey).update(u_password).digest('base64');
+    const encrypted = crypto.createHmac('sha512', secretKey).update(u_password).digest('base64');
     return encrypted;
 }
 
@@ -31,51 +28,26 @@ function encrypt(u_password) {
 // Written By 신기용
 // 로그인
 router.post('/signin', async (req, res, next) => {
-    let { email, pwd } = req.body;
-    pwd = encrypt(pwd);
+    let { id, password } = req.body;
+    password = encrypt(password);
 
     let selectQuery =
     `
-    SELECT idx, email, name, phone_number, image_profile
+    SELECT idx
     FROM users
-    WHERE email = ? and pwd = ?
+    WHERE id = ? and password = ?
     `;
 
-    let selectCatQuery=
-    `
-    SELECT idx
-    FROM cats
-    WHERE user_idx = ?
-    `
-
-    let userTicketQuery=
-    `
-    SELECT o.product
-    FROM orders as o, reservations as r
-    WHERE o.idx = r.order_idx and o.user_idx = ? and ( o.product = 3 or o.product = 6 )
-    `
 
     let result = {};
     try {
-        let _result = await db.query(selectQuery, [email, pwd.toString('base64')]);
-        if(!_result[0]){
-                return next("401");
+        let _result = await db.query(selectQuery, [id, password.toString('base64')]);
+        if(_result.length == 0 ){
+                return next("401"); // "description": "로그인에 실패하였습니다.",
         }
-        let catQueryResult = await db.Query(selectCatQuery, [_result[0].idx]);
-        if(_result.length > 0){
-            let userTicket = await db.Query(userTicketQuery, [_result[0].idx]);
 
-            result.flag = userTicket.length > 0 ? "1" : "-1" ;
-            result.token = jwt.sign(email, _result[0].idx);
-            result.email = _result[0].email;
-            result.name = _result[0].name;
-            result.phone_number = _result[0].phone_number;
-            result.image_profile = _result[0].image_profile;
-            result.cat_idx = catQueryResult.length > 0 ? String(catQueryResult[0].idx) : "-1";
-        }
-        else{
-            return next("401");
-        }
+        result.token = jwt.sign(id, _result[0].idx);
+        result.id = _result[0].idx;
     } catch (error) {
         return next(error);
     }
@@ -85,8 +57,6 @@ router.post('/signin', async (req, res, next) => {
 });
 
 
-// Written By 신기용
-// 회원가입
 router.post('/signup', async (req, res, next) => {
     let { id, password } = req.body;
     password = encrypt(password);
