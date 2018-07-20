@@ -33,7 +33,7 @@ router.post('/signin', async (req, res, next) => {
 
     let selectQuery =
     `
-    SELECT idx
+    SELECT idx, user_type
     FROM users
     WHERE id = ? and password = ?
     `;
@@ -48,6 +48,9 @@ router.post('/signin', async (req, res, next) => {
 
         result.token = jwt.sign(id, _result[0].idx);
         result.id = _result[0].idx;
+        result.email = id;
+        result.type = _result[0].user_type == 1 ? 1 : 0 ;
+
     } catch (error) {
         return next(error);
     }
