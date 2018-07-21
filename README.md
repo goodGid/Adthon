@@ -8,8 +8,8 @@
 
 --
 
+<img align="right" width="200" src="https://goodgid/assets/img/posts/amathon_requirements_1.png" />
 
-[요구사항_1](https://goodgid/assets/img/posts/amathon_requirements_1.png)
 
 
 [요구사항_2](https://goodgid/assets/img/posts/amathon_requirements_2.png)
