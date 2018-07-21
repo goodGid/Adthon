@@ -1,4 +1,4 @@
-# Amathon 1조 : 사용자 광고 클릭 및 노출 이벤트 추적 대시보드 만들기
+# Amathon 1조 <br> 사용자 광고 클릭 및 노출 이벤트 추적 대시보드 만들기
 
 
 # What is [Amathon](https://amathon.ga/) ?
@@ -48,7 +48,7 @@ src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/a
 
 <img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_requirements_2.png" />
 
-* `Elastic Beanstalk`라는 AWS의 자원을 이용하였다.
+* `Elastic Beanstalk`라는 AWS의 자원을 사용하여 서버 배포
 
 
 
