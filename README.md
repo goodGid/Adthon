@@ -9,3 +9,6 @@
 --
 
 <img align="center" width="200" src="https://goodgid/assets/img/posts/amathon_requirements_1.png" />
+
+
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
