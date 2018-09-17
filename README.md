@@ -6,16 +6,17 @@
 # What is [Amathon](https://amathon.ga/) ?
 
 
-<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_concept.png" />
+<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_concept.png" />
 
 ---
 
 
 # Amathon Session
 
-<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_pre_session.png" />
+<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_pre_session.png" />
 
-<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_info.png" />
+
+<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_info.png" />
 
 ---
 
@@ -24,9 +25,9 @@
 
 
 <img  width = "70%" height = "70%" 
-src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_timetable_1.png" />
+src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_timetable_1.png" />
 
-<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_timetable_2.png" />
+<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_timetable_2.png" />
 
 
 ---
@@ -45,10 +46,10 @@ src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/a
 ## Requirements
 
 
-<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_requirements_1.png" />
+<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_requirements_1.png" />
 
 
-<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/posts/amathon_requirements_2.png" />
+<img  width = "70%" height = "70%" src="https://github.com/goodGid/goodGid.github.io/blob/master/assets/img/competition/amathon_requirements_2.png" />
 
 * `Elastic Beanstalk`라는 AWS의 자원을 사용하여 서버 배포
 
